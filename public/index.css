@@ -1,0 +1,124 @@
+:root {
+  --green: lime;
+  --yellow: gold;
+  --red: red;
+
+  --body: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI',
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+  --mono: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
+}
+
+body {
+  font-family: var(--body);
+}
+
+.grid {
+  display: grid;
+  grid-gap: 1.5rem;
+}
+
+.country-name {
+  font-weight: 500;
+  font-size: 1.25em;
+}
+
+.country-name,
+.country-score {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-top: 1px solid #dedede;
+}
+
+.country-score-chart {
+  display: block;
+  fill: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  transform: rotate(-90deg);
+}
+
+.country-score-chart-bg,
+.country-score-chart-val {
+  stroke-width: 64;
+  stroke-linecap: round;
+}
+
+.country-score-chart-bg {
+  stroke: #f0f0f0;
+}
+.country-score-chart-val[data-score='high'] {
+  stroke: var(--green);
+}
+.country-score-chart-val[data-score='med'] {
+  stroke: var(--yellow);
+}
+.country-score-chart-val[data-score='low'] {
+  stroke: var(--red);
+}
+
+.country-score-display {
+  display: flex;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 0.75em;
+}
+
+.data {
+  position: relative;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-col {
+  text-transform: uppercase;
+  text-align: left;
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 0.7em;
+  white-space: nowrap;
+}
+
+.data-col-sort {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0.5em 0;
+  border: none;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  background: none;
+  white-space: nowrap;
+  outline: none;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.data-info {
+  display: inline-flex;
+  border: 1px solid currentColor;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.375em;
+  text-decoration: none;
+}
+
+@media (min-width: 750px) {
+  .grid {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .map {
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+  }
+}
+
+.map path {
+  fill: none;
+  fill-rule: evenodd;
+}
