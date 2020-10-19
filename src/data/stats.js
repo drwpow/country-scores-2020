@@ -138,7 +138,7 @@ export const corruption = {
   LAO: 0.29,
   MDV: 0.29,
   MLI: 0.29,
-  TEX: 0.29,
+  MEX: 0.29,
   MMR: 0.29,
   TGO: 0.29,
   DOM: 0.28,
@@ -260,6 +260,61 @@ export const food = {
   BGR: 0.545,
   ARE: 0.523,
 };
+
+/**
+ * OECD Healthcare Costs, 2019 (inflation-adjusted)
+ * https://data.oecd.org/healthres/health-spending.htm
+ */
+const healthcareData = {
+  AUS: 5187.419,
+  AUT: 5851.055,
+  BEL: 5427.957,
+  BGR: 1996.441,
+  CAN: 5418.383,
+  CHE: 7732.412,
+  CHL: 2159.354,
+  COL: 1212.604,
+  CYP: 2790.266,
+  CZE: 3426.039,
+  DEU: 6645.757,
+  DNK: 5567.899,
+  ESP: 3616.459,
+  EST: 2578.793,
+  FIN: 4578.42,
+  FRA: 5375.699,
+  GBR: 4653.058,
+  GRC: 2383.628,
+  HRV: 2007.899,
+  HUN: 2222.426,
+  IRL: 5275.543,
+  ISL: 4811.424,
+  ISR: 2932.461,
+  ITA: 3649.206,
+  JPN: 4822.812,
+  KOR: 3384.158,
+  LTU: 2638.133,
+  LUX: 5558.322,
+  LVA: 1972.572,
+  MEX: 1153.581,
+  MLT: 4328.751,
+  NLD: 5765.098,
+  NOR: 6646.713,
+  NZL: 4203.989,
+  POL: 2292.146,
+  PRT: 3378.627,
+  ROU: 1906.81,
+  SVK: 2353.645,
+  SVN: 3224.02,
+  SWE: 5782.292,
+  TUR: 1339.511,
+  USA: 11071.715,
+};
+const healthCareMax =
+  Object.values(healthcareData).reduce((val, n) => (n > val ? n : val), 0) *
+  1.1;
+export const healthcare = Object.fromEntries(
+  Object.entries(healthcareData).map(([k, v]) => [k, 1 - v / healthCareMax]),
+);
 
 /**
  * Wealth Gini 2019

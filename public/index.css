@@ -1,8 +1,4 @@
 :root {
-  --green: lime;
-  --yellow: gold;
-  --red: red;
-
   --body: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI',
     Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
   --mono: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
@@ -47,14 +43,17 @@ body {
 .country-score-chart-bg {
   stroke: #f0f0f0;
 }
-.country-score-chart-val[data-score='high'] {
-  stroke: var(--green);
+.country-score-chart-val[data-grade='high'] {
+  stroke: lime;
 }
-.country-score-chart-val[data-score='med'] {
-  stroke: var(--yellow);
+.country-score-chart-val[data-grade='med'] {
+  stroke: gold;
 }
-.country-score-chart-val[data-score='low'] {
-  stroke: var(--red);
+.country-score-chart-val[data-grade='med-low'] {
+  stroke: orange;
+}
+.country-score-chart-val[data-grade='low'] {
+  stroke: red;
 }
 
 .country-score-display {
@@ -71,12 +70,14 @@ body {
 }
 
 .data-col {
+  height: 3rem;
   text-transform: uppercase;
   text-align: left;
   font-family: var(--mono);
   font-weight: 400;
   font-size: 0.7em;
   white-space: nowrap;
+  vertical-align: middle;
 }
 
 .data-col-sort {
@@ -108,7 +109,7 @@ body {
 
 @media (min-width: 750px) {
   .grid {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .map {
