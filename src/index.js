@@ -38,7 +38,7 @@ function recolor(metric = 'score') {
   const colors = {
     corruption: [255, 29, 76],
     food: [0, 202, 113],
-    healthcare: [255, 29, 76],
+    healthcare: [0, 131, 255],
     inequality: [255, 29, 76],
     score: [0, 131, 255],
   };
@@ -55,11 +55,14 @@ function recolor(metric = 'score') {
   document.querySelectorAll('.map path').forEach((el) => {
     const data = countries.find(([k]) => k === el.id);
     if (data) {
-      const [r, g, b] = colors[metric];
       let a = (data[1][metric] - min) / (max - min);
+      let [r, g, b] = colors[metric];
+      if (metric === 'healthcare') {
+        if (a < 0.5) [r, g, b] = [255, 29, 76];
+        a = Math.abs(2 * (a - 0.5));
+      }
       if (metric === 'corruption') a = 1 - a;
       if (metric === 'inequality') a = 1 - a;
-      if (metric === 'healthcare') a = 1 - a;
       el.setAttribute('style', `fill:rgba(${r}, ${g}, ${b}, ${a || 0})`);
     }
   });
